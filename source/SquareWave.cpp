@@ -1,4 +1,4 @@
-#include "../header/SquareWave.h"
+#include "SquareWave.h"
 
 SquareWave::SquareWave(double frequency, double amplitude) : Wave(frequency, amplitude) {};
 

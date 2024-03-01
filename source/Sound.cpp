@@ -1,4 +1,4 @@
-#include "../header/Sound.h"
+#include "Sound.h"
 
 Sound::Sound() {};
 

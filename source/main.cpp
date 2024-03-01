@@ -1,11 +1,11 @@
 
-#include "../header/wavWriter.h"
-#include "../header/Sound.h"
-#include "../header/SoundByte.h"
-#include "../header/SineWave.h"
-#include "../header/SquareWave.h"
-#include "../header/TriangleWave.h"
-#include "../header/SawtoothWave.h"
+#include "wavWriter.h"
+#include "Sound.h"
+#include "SoundByte.h"
+#include "SineWave.h"
+#include "SquareWave.h"
+#include "TriangleWave.h"
+#include "SawtoothWave.h"
 
 #include <iostream>
 

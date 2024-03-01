@@ -1,4 +1,4 @@
-#include "../header/SoundByte.h"
+#include "SoundByte.h"
 
 SoundByte::SoundByte(double pitch, double length) : m_pitch(pitch) , m_length(length) {};
 

@@ -1,6 +1,6 @@
-#include "../header/WavWriter.h"
-#include "../header/LEndian.h"
-#include "../header/Sound.h"
+#include "WavWriter.h"
+#include "LEndian.h"
+#include "Sound.h"
 #include <memory>
 #include <cmath>
 #include <iostream>

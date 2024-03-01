@@ -1,4 +1,4 @@
-#include "../header/SineWave.h"
+#include "SineWave.h"
 #include <cmath>
 
 SineWave::SineWave(double frequency, double amplitude) : Wave(frequency, amplitude) {};

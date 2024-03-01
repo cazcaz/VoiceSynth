@@ -1,4 +1,4 @@
-#include "../header/TriangleWave.h"
+#include "TriangleWave.h"
 
 TriangleWave::TriangleWave(double frequency, double amplitude) : Wave(frequency, amplitude) {};
 

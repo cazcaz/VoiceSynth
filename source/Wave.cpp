@@ -1,4 +1,4 @@
-#include "../header/Wave.h"
+#include "Wave.h"
 #include <cmath>
 
 Wave::Wave(double frequency, double amplitude) : m_frequency(frequency), m_amplitude(amplitude) {

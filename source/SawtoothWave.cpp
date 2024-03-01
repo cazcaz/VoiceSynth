@@ -1,4 +1,4 @@
-#include "../header/SawtoothWave.h"
+#include "SawtoothWave.h"
 
 SawtoothWave::SawtoothWave(double frequency, double amplitude) : Wave(frequency, amplitude) {};
 
