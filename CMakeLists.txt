@@ -10,8 +10,20 @@ set(CMAKE_CXX_STANDARD 14)
 # Automatically detect source files in "source" directory
 file(GLOB_RECURSE SRC_FILES ${PROJECT_SOURCE_DIR}/source/*.cpp)
 
-# Automatically detect header files in "header" directory
-file(GLOB_RECURSE HEADER_FILES ${PROJECT_SOURCE_DIR}/header/*.h)
+# Remove the main.cpp file from the source files
+list(REMOVE_ITEM SRC_FILES "${PROJECT_SOURCE_DIR}/source/main.cpp")
 
 # Add executable
-add_executable(${PROJECT_NAME} ${SRC_FILES} ${HEADER_FILES})
+add_executable(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/source/main.cpp ${SRC_FILES})
+
+# Add Catch2 as a subdirectory if it exists
+if(EXISTS "${PROJECT_SOURCE_DIR}/catch2/CMakeLists.txt")
+    add_subdirectory(Catch2)
+endif()
+
+# Add a new directory for unit tests
+file(GLOB_RECURSE TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/unit_tests/*.cpp)
+set(Catch2_DIR "${PROJECT_SOURCE_DIR}/catch2")
+# These tests can use the Catch2-provided main
+add_executable(unit_tests ${TEST_SRC_FILES} ${SRC_FILES})
+target_link_libraries(unit_tests PRIVATE Catch2::Catch2WithMain)
