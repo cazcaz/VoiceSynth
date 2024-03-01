@@ -33,3 +33,9 @@
 
 # Vscode project settings
 *.vscode
+
+# build directory
+build
+
+# CMake files
+CMakeFiles
