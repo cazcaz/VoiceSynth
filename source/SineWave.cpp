@@ -1,10 +1,10 @@
 #include "SineWave.h"
+
 #include <cmath>
 
-SineWave::SineWave(double frequency, double amplitude) : Wave(frequency, amplitude) {};
+SineWave::SineWave(double frequency, double amplitude)
+    : Wave(frequency, amplitude){};
 
 SineWave::~SineWave() = default;
 
-double SineWave::evaluateOriginal(double x) {
-    return sin(x);
-}
+double SineWave::evaluateOriginal(double x) { return sin(x); }

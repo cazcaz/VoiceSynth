@@ -4,11 +4,12 @@
 #include "Wave.h"
 
 class SawtoothWave : public Wave {
-    public:
-        SawtoothWave(double frequency, double amplitude);
-        ~SawtoothWave();
-    private:
-        double evaluateOriginal(double) override;
+ public:
+  SawtoothWave(double frequency, double amplitude);
+  ~SawtoothWave();
+
+ private:
+  double evaluateOriginal(double) override;
 };
 
 #endif

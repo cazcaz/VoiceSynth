@@ -4,11 +4,12 @@
 #include "Wave.h"
 
 class SquareWave : public Wave {
-    public:
-        SquareWave(double frequency, double amplitude);
-        ~SquareWave();
-    private:
-        double evaluateOriginal(double) override;
+ public:
+  SquareWave(double frequency, double amplitude);
+  ~SquareWave();
+
+ private:
+  double evaluateOriginal(double) override;
 };
 
 #endif

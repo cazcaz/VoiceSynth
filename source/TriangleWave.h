@@ -4,11 +4,12 @@
 #include "Wave.h"
 
 class TriangleWave : public Wave {
-    public:
-        TriangleWave(double frequency, double amplitude);
-        ~TriangleWave();
-    private:
-        double evaluateOriginal(double) override;
+ public:
+  TriangleWave(double frequency, double amplitude);
+  ~TriangleWave();
+
+ private:
+  double evaluateOriginal(double) override;
 };
 
 #endif
