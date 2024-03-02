@@ -15,10 +15,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: choco install llvm --version 12.0.0
-          echo "C:\Program Files\LLVM\bin" >> $GITHUB_PATH
-
       - name: Clang format check
         run: |
           find . -name '*.cpp' -or -name '*.h' | xargs clang-format -i --style=file
