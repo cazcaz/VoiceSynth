@@ -2,8 +2,6 @@ name: CI
 
 on:
   push:
-    branches:
-      - "main"
   pull_request:
     branches:
       - "main"
@@ -51,8 +49,8 @@ jobs:
           chmod u+x llvm.sh
           sudo ./llvm.sh 16
 
-      - name: Check clang-format version
-        run: clang-format --version
+      - name: Check clang-format-16 version
+        run: clang-format-16 --version
 
       - name: Clang format check
         run: |
