@@ -45,6 +45,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          sudo apt update && sudo apt upgrade
           wget https://apt.llvm.org/llvm.sh
           chmod u+x llvm.sh
           sudo ./llvm.sh 16
@@ -54,7 +55,7 @@ jobs:
 
       - name: Clang format check
         run: |
-          find . -name '*.cpp' -or -name '*.h' | xargs clang-format-16 -i --style=file
+          find . -name '*.cpp' -or -name '*.h' | xargs clang-format -i --style=file
           git diff
 
       - name: Create Build Environment
