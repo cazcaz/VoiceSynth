@@ -21,9 +21,19 @@ if(EXISTS "${PROJECT_SOURCE_DIR}/catch2/CMakeLists.txt")
     add_subdirectory(Catch2)
 endif()
 
+# Enable testing
+enable_testing()
+
 # Add a new directory for unit tests
 file(GLOB_RECURSE TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/unit_tests/*.cpp)
 set(Catch2_DIR "${PROJECT_SOURCE_DIR}/catch2")
+
 # These tests can use the Catch2-provided main
 add_executable(unit_tests ${TEST_SRC_FILES} ${SRC_FILES})
 target_link_libraries(unit_tests PRIVATE Catch2::Catch2WithMain)
+
+# Add tests to the project
+foreach(_test_file ${TEST_SRC_FILES})
+    get_filename_component(_test_name ${_test_file} NAME_WE)
+    add_test(NAME ${_test_name} COMMAND unit_tests)
+endforeach()

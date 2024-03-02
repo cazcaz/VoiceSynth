@@ -1,27 +1,23 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - "master"
+  pull_request:
+    branches:
+      - "master"
 
 jobs:
-  build-and-test:
-    strategy:
-      matrix:
-        os: [windows-latest, ubuntu-latest]
-
-    runs-on: ${{ matrix.os }}
-
+  basic-on-windows:
+    runs-on: windows-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: |
-          if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            choco install llvm --version 12.0.0
-            echo "C:\Program Files\LLVM\bin" >> $GITHUB_PATH
-          else
-            sudo apt-get install -y clang-format
-          fi
+        run: choco install llvm --version 12.0.0
+          echo "C:\Program Files\LLVM\bin" >> $GITHUB_PATH
 
       - name: Clang format check
         run: |
@@ -37,6 +33,33 @@ jobs:
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config Release
 
-      - name: Run tests
+      - name: Unit Tests
+        working-directory: ${{github.workspace}}/build
+        run: ctest -C Release
+
+  basic-on-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: sudo apt-get install -y clang-format
+
+      - name: Clang format check
+        run: |
+          find . -name '*.cpp' -or -name '*.h' | xargs clang-format -i --style=file
+          git diff
+
+      - name: Create Build Environment
+        run: cmake -E make_directory ${{github.workspace}}/build
+
+      - name: Configure CMake
+        run: cmake ${{github.workspace}} -B ${{github.workspace}}/build
+
+      - name: Build
+        run: cmake --build ${{github.workspace}}/build --config Release
+
+      - name: Unit Tests
         working-directory: ${{github.workspace}}/build
         run: ctest -C Release
