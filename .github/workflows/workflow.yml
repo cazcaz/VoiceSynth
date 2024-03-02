@@ -49,12 +49,12 @@ jobs:
           chmod u+x llvm.sh
           sudo ./llvm.sh 16
 
-      - name: Check clang-format-16 version
-        run: clang-format-16 --version
+      - name: Check clang-format version
+        run: clang-format --version
 
       - name: Clang format check
         run: |
-          find . -name '*.cpp' -or -name '*.h' | xargs clang-format -i --style=file
+          find . -name '*.cpp' -or -name '*.h' | xargs clang-format-16 -i --style=file
           git diff
 
       - name: Create Build Environment
