@@ -49,18 +49,6 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install dependencies
-        run: |
-          sudo apt install clang-format-16
-
-      - name: Check clang-format version
-        run: clang-format --version
-
-      - name: Clang format check
-        run: |
-          find . -name '*.cpp' -or -name '*.h' | xargs clang-format -i --style=file
-          git diff
-
       - name: Create Build Environment
         run: cmake -E make_directory ${{github.workspace}}/build
 
