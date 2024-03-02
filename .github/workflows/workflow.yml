@@ -18,10 +18,7 @@ jobs:
           submodules: recursive
 
       - name: Install dependencies
-        run: |
-          choco install git
-          git submodule update --init --recursive
-          choco install llvm
+        run: choco install llvm
 
       - name: Check clang-format version
         run: clang-format --version
