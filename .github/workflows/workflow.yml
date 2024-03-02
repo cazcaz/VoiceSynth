@@ -47,8 +47,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get install -y clang-format
-          sudo apt-get update
+          wget https://apt.llvm.org/llvm.sh
+          chmod u+x llvm.sh
+          sudo ./llvm.sh 17
 
       - name: Check clang-format version
         run: clang-format --version
