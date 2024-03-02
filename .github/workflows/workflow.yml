@@ -16,7 +16,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: choco install llvm
+        run: |
+          choco install git
+          git submodule update --init --recursive
+          choco install llvm
 
       - name: Check clang-format version
         run: clang-format --version
