@@ -15,6 +15,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install dependencies
+        run: choco install llvm
+
+      - name: Check clang-format version
+        run: clang-format --version
+
       - name: Clang format check
         run: |
           find . -name '*.cpp' -or -name '*.h' | xargs clang-format -i --style=file
@@ -41,6 +47,9 @@ jobs:
 
       - name: Install dependencies
         run: sudo apt-get install -y clang-format
+
+      - name: Check clang-format version
+        run: clang-format --version
 
       - name: Clang format check
         run: |
