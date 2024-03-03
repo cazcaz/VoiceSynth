@@ -7,7 +7,7 @@
 #include "SoundByte.h"
 #include "SquareWave.h"
 #include "TriangleWave.h"
-#include "wavWriter.h"
+#include "WavWriter.h"
 
 int main() {
   Sound testSound{};
