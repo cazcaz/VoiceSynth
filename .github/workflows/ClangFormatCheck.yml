@@ -1,0 +1,29 @@
+name: Clang Format Check
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  basic-on-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Install dependencies
+        run: choco install llvm
+
+      - name: Check clang-format version
+        run: clang-format --version
+
+      - name: Clang format check
+        run: |
+          find . -name '*.cpp' -or -name '*.h' | xargs clang-format -i --style=file
+          git diff --exit-code
