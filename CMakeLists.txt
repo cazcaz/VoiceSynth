@@ -18,7 +18,7 @@ add_executable(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/source/main.cpp ${SRC_FILES
 
 # Add Catch2 as a subdirectory if it exists
 if(EXISTS "${PROJECT_SOURCE_DIR}/catch2/CMakeLists.txt")
-    add_subdirectory(Catch2)
+    add_subdirectory(catch2)
 endif()
 
 # Enable testing
