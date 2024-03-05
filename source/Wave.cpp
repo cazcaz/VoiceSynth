@@ -2,8 +2,10 @@
 
 #include <cmath>
 
+#include "MathConsts.h"
+
 Wave::Wave(double frequency, double amplitude)
-    : m_frequency(frequency), m_amplitude(amplitude) {}
+    : m_frequency(MathConsts::TWO_PI * frequency), m_amplitude(amplitude) {}
 
 Wave::~Wave() {}
 
@@ -17,7 +19,8 @@ std::vector<SoundByte> Wave::getSoundBytes(double duration, double sampleRate) {
 };
 
 double Wave::evaluate(double x) {
-  double scaledX = m_frequency * x / MathConsts::TWO_PI;
-  double movedX = scaledX / floor(scaledX / MathConsts::TWO_PI);
+  double scaledX = m_frequency * x;
+  double movedX =
+      scaledX - floor(scaledX / MathConsts::TWO_PI) * MathConsts::TWO_PI;
   return m_amplitude * evaluateOriginal(movedX);
 }
