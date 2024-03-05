@@ -5,9 +5,6 @@ First time using Catch2 for unit tests and GitHub Actions to run clang-format ch
 
 # To-do:
 - Implement unit tests for existing code:
-  - Add data store for tests that can be read and compared to []
-  - Add raw data to dataStore of a middle C sound wave .wav file []
-  - Create a test to see that the Sound class written with the WavWriter can produce a middle C sine wave sound file that matches a premade one []
-  - Test wave producing classes []
+  - Create tests to see that the Sound class can produce a middle C wave sound values that matches a premade ones [x]
   - Test little endian writer []
 
